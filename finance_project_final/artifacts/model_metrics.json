@@ -1,0 +1,48 @@
+{
+  "target_description": "Target = 1 when next-year revenue growth beats either the industry median or 5%, next-year ROA is above 2%, next-year CFO/Assets is positive, and next-year Debt/Assets is below 0.60.",
+  "model_features": [
+    "revenue_growth",
+    "roa",
+    "debt_ratio",
+    "cfo_assets"
+  ],
+  "display_features": [
+    "revenue_growth",
+    "roa",
+    "debt_ratio",
+    "cfo_assets",
+    "current_ratio",
+    "profit_margin"
+  ],
+  "start_year": 2010,
+  "train_end_year": 2020,
+  "val_end_year": 2022,
+  "n_train_rows": 65285,
+  "n_val_rows": 11914,
+  "n_test_rows": 9921,
+  "positive_rate_train": 0.24950601210078885,
+  "positive_rate_val": 0.2331710592580158,
+  "positive_rate_test": 0.23908880153210363,
+  "selected_C": 1.0,
+  "selected_threshold": 0.52,
+  "validation_accuracy": 0.7437468524425046,
+  "validation_f1": 0.5404184856239651,
+  "validation_balanced_accuracy": 0.7097860629993733,
+  "validation_auc": 0.7780437503703732,
+  "test_accuracy": 0.7354097369216813,
+  "test_f1": 0.5603751465416178,
+  "test_precision": 0.4648513475965546,
+  "test_recall": 0.7053119730185498,
+  "test_balanced_accuracy": 0.7250894214013135,
+  "test_auc": 0.7926885550658687,
+  "confusion_matrix": [
+    [
+      5623,
+      1926
+    ],
+    [
+      699,
+      1673
+    ]
+  ]
+}
