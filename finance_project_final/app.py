@@ -41,6 +41,16 @@ section[data-testid="stSidebar"] * {color: var(--text) !important;}
 .power-title {text-align: center; font-size: 2.95rem; line-height: 1.08; font-weight: 800; color: #f3e8bd; margin: 1.8rem 0 0.85rem 0;}
 .power-sub {text-align: center; font-size: 1.12rem; color: var(--muted); max-width: 1080px; margin: 0 auto 2.4rem auto;}
 .small-note {color: var(--muted);}
+.brand-wrap {text-align:center; margin: 0.2rem 0 0.9rem 0;}
+.brand-mark {display:inline-flex; align-items:center; gap:0; position:relative; font-weight:900; font-size:2.55rem; letter-spacing:0; color: var(--gold); line-height:1; text-transform:none; white-space:nowrap;}
+.brand-part {display:inline-block; margin:0; padding:0; line-height:1;}
+.brand-u-wrap {display:inline-flex; align-items:center; justify-content:center; position:relative; width:0.86em; text-align:center; margin:0 -0.06em 0 -0.04em; padding:0; line-height:1;}
+.brand-u-main {position:relative; z-index:2; display:inline-block; font-weight:900;}
+.brand-u-q {position:absolute; left:50%; top:50%; transform:translate(-50%,-57%); font-size:2.2em; font-weight:900; color: rgba(212,175,55,0.34); filter: blur(3.2px); z-index:1; pointer-events:none; line-height:1;}
+.home-brand .brand-mark {font-size:3.15rem;}
+.sidebar-brand-fixed {position: fixed; left: 1rem; bottom: 1rem; width: calc(21rem - 2rem); text-align: center; pointer-events: none; z-index: 999;}
+.sidebar-brand-fixed .brand-mark {font-size:1.9rem;}
+@media (max-width: 1200px) {.sidebar-brand-fixed {width: calc(18rem - 2rem);}}
 .home-grid {display:grid; grid-template-columns:repeat(4, minmax(220px, 1fr)); gap: 2.1rem 2.6rem; max-width: 1220px; margin: 2.0rem auto 0.8rem auto;}
 .home-tile-link {text-decoration:none !important;}
 .home-tile {width: 240px; height: 240px; margin: 0 auto; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold-soft); display:flex; align-items:center; justify-content:center; text-align:center; padding: 1.25rem; transition: all 0.18s ease-in-out; box-sizing:border-box;}
@@ -54,6 +64,17 @@ div[data-testid="stButton"] > button[kind="primary"] {background: linear-gradien
 </style>
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
+
+
+def brand_logo_html(home=False):
+    extra = " home-brand" if home else ""
+    return (
+        f'<div class="brand-wrap{extra}">'
+        '<div class="brand-mark">Should'
+        '<span class="brand-u-wrap"><span class="brand-u-q">?</span><span class="brand-u-main">U</span></span>'
+        'Expand</div></div>'
+    )
 
 PAGE_NAMES = [
     "Home",
@@ -219,6 +240,7 @@ def render_sidebar():
         else:
             st.caption(f"Live ticker: {st.session_state.get('live_ticker', 'Not selected')}")
         st.caption("Use the Company Details page to change the company selection used across the app.")
+        st.markdown('<div class="sidebar-brand-fixed">' + brand_logo_html() + '</div>', unsafe_allow_html=True)
 
 
 def get_current_company_context():
@@ -316,9 +338,10 @@ def build_comparison_table(row, peer):
 
 # Home page styling
 if st.session_state.page == "Home":
+    st.markdown(brand_logo_html(home=True), unsafe_allow_html=True)
     st.markdown('<div class="power-title">Public Company Expansion Readiness Analyzer</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="power-sub">A beginner-friendly financial analytics tool that scores a selected public company and compares it only with companies that share the same SIC industry code.</div>',
+        '<div class="power-sub">A Financial analytics tool that scores a selected public company and compares it only with companies that share the same SIC industry code.</div>',
         unsafe_allow_html=True,
     )
 
