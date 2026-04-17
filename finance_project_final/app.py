@@ -341,7 +341,7 @@ if st.session_state.page == "Home":
     st.markdown(brand_logo_html(home=True), unsafe_allow_html=True)
     st.markdown('<div class="power-title">Public Company Expansion Readiness Analyzer</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="power-sub">A beginner-friendly financial analytics tool that scores a selected public company and compares it only with companies that share the same SIC industry code.</div>',
+        '<div class="power-sub">A financial analytics tool that scores a selected public company and compares it only with companies that share the same SIC industry code.</div>',
         unsafe_allow_html=True,
     )
 
