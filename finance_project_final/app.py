@@ -240,7 +240,7 @@ def render_sidebar():
         else:
             st.caption(f"Live ticker: {st.session_state.get('live_ticker', 'Not selected')}")
         st.caption("Use the Company Details page to change the company selection used across the app.")
-        st.markdown('<div class="sidebar-brand-fixed">' + brand_logo_html() + '</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sidebar-brand-fixed">' + brand_logo_html() + '</div></div>', unsafe_allow_html=True)
 
 
 def get_current_company_context():
